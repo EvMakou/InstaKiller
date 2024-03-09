@@ -15,19 +15,13 @@ protocol MainScreenPresentable: UIViewController {
     func makePhotoScreen()
     func adjustListLayout()
     func adjustColumnLayout()
+    
+    func update(images: [UIImage])
 }
 
 final class MainScreenViewController: ViewController, MainScreenControllable {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout())
-    private var isColumnLayout = false {
-        didSet {
-            if isColumnLayout {
-                collectionView.setCollectionViewLayout(columnLayout(), animated: true)
-            } else {
-                collectionView.setCollectionViewLayout(listLayout(), animated: true)
-            }
-        }
-    }
+    private var images: [UIImage] = []
     
     var interactor: MainScreenInteractable?
 
@@ -58,6 +52,7 @@ extension MainScreenViewController: UIImagePickerControllerDelegate, UINavigatio
         }
         
         print(image.size)
+        interactor?.photoTaken(image: image)
     }
 }
 
@@ -77,19 +72,25 @@ extension MainScreenViewController: MainScreenPresentable {
     func adjustColumnLayout() {
         collectionView.setCollectionViewLayout(columnLayout(), animated: true)
     }
+    
+    func update(images: [UIImage]) {
+        self.images = images
+        collectionView.reloadData()
+    }
 }
 
 extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        100
+        images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCell.identifier, for: indexPath) as? MainScreenCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCell.identifier, for: indexPath) as? MainScreenCell,
+              let image = images[safe: indexPath.row] else {
             return UICollectionViewCell()
         }
         
-        cell.backgroundColor = .red
+        cell.imageView.image = image
         
         return cell
     }

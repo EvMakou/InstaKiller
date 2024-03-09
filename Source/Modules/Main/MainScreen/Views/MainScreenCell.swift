@@ -7,7 +7,7 @@
 
 import UIKit
 
-class MainScreenCell: UICollectionViewCell {
+final class MainScreenCell: UICollectionViewCell {
     let imageView = UIImageView()
     
     override init(frame: CGRect) {

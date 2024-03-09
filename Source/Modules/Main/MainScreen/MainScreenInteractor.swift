@@ -5,7 +5,7 @@
 //  Created by Yauheni Chumakou on 9.03.24.
 //
 
-import Foundation
+import UIKit.UIImage
 
 protocol MainScreenInteractable: ViewInteractable {
     var presenter: MainScreenPresentable { get }
@@ -13,10 +13,14 @@ protocol MainScreenInteractable: ViewInteractable {
     
     func makePhotoAction()
     func changeLayoutAction()
+    func photoTaken(image: UIImage)
 }
 
 final class MainScreenInteractor {
+    @Injected private var imagesControlService: ImagesStoreServiceProtocol
+    
     private var isColumnLayout = false
+    private var images: [UIImage] = []
     
     unowned let presenter: MainScreenPresentable
     let router: MainScreenRouting
@@ -30,6 +34,17 @@ final class MainScreenInteractor {
 extension MainScreenInteractor: MainScreenInteractable {
     func viewDidLoad() {
         presenter.adjustListLayout()
+        
+        let names = imagesControlService.imageNames()
+        
+        for name in names {
+            if let image = imagesControlService.image(fileName: name) {
+                images.append(image)
+            }
+        }
+        
+        presenter.update(images: images)
+        print("")
     }
     
     func makePhotoAction() {
@@ -43,6 +58,25 @@ extension MainScreenInteractor: MainScreenInteractable {
             presenter.adjustColumnLayout()
         } else {
             presenter.adjustListLayout()
+        }
+    }
+    
+    func photoTaken(image: UIImage) {
+        let now = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMMM d"
+        let nameOfMonth = dateFormatter.string(from: now)
+        
+        let count = imagesControlService.imageNames().compactMap { $0.components(separatedBy: "(").first }.filter { $0 == nameOfMonth }.count
+        
+        print("")
+        
+        let imageName = nameOfMonth + "(\(count + 1))"
+        
+        if imagesControlService.saveImage(imageName: imageName, image: image) {
+            print("")
+            images.append(image)
+            presenter.update(images: images)
         }
     }
 }
