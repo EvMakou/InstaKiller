@@ -37,6 +37,9 @@
 		8F8588F22B9C8B2F00BB2D65 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */; };
 		8F8588F32B9C8B2F00BB2D65 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588EE2B9C8B2F00BB2D65 /* MainScreenBuilder.swift */; };
 		8F8588F42B9C8B2F00BB2D65 /* MainScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */; };
+		8F8588F72B9C9D4000BB2D65 /* MainScreenCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588F62B9C9D4000BB2D65 /* MainScreenCell.swift */; };
+		8F8588FB2B9C9F4E00BB2D65 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588FA2B9C9F4E00BB2D65 /* UIView+Extension.swift */; };
+		8F8588FD2B9CA08700BB2D65 /* UICollection+Extenstion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588FC2B9CA08700BB2D65 /* UICollection+Extenstion.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +73,9 @@
 		8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
 		8F8588EE2B9C8B2F00BB2D65 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
 		8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInteractor.swift; sourceTree = "<group>"; };
+		8F8588F62B9C9D4000BB2D65 /* MainScreenCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenCell.swift; sourceTree = "<group>"; };
+		8F8588FA2B9C9F4E00BB2D65 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		8F8588FC2B9CA08700BB2D65 /* UICollection+Extenstion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollection+Extenstion.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +173,7 @@
 			children = (
 				8F8588CD2B9C809100BB2D65 /* Main */,
 				8F8588DE2B9C838100BB2D65 /* Launch */,
+				8F8588F82B9C9F1000BB2D65 /* Utlts */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -216,6 +223,7 @@
 		8F8588EA2B9C8B1700BB2D65 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
+				8F8588F52B9C9D3000BB2D65 /* Views */,
 				8F8588EB2B9C8B2F00BB2D65 /* MainScreen.storyboard */,
 				8F8588EC2B9C8B2F00BB2D65 /* MainScreenRouter.swift */,
 				8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */,
@@ -223,6 +231,31 @@
 				8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */,
 			);
 			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		8F8588F52B9C9D3000BB2D65 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588F62B9C9D4000BB2D65 /* MainScreenCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8F8588F82B9C9F1000BB2D65 /* Utlts */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588F92B9C9F3C00BB2D65 /* Extentions */,
+			);
+			path = Utlts;
+			sourceTree = "<group>";
+		};
+		8F8588F92B9C9F3C00BB2D65 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588FA2B9C9F4E00BB2D65 /* UIView+Extension.swift */,
+				8F8588FC2B9CA08700BB2D65 /* UICollection+Extenstion.swift */,
+			);
+			path = Extentions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +340,7 @@
 			files = (
 				8F8588F42B9C8B2F00BB2D65 /* MainScreenInteractor.swift in Sources */,
 				8F8588C22B9C7D8700BB2D65 /* UIViewController+Extension.swift in Sources */,
+				8F8588FD2B9CA08700BB2D65 /* UICollection+Extenstion.swift in Sources */,
 				8F8588BF2B9C7D7E00BB2D65 /* ViewController.swift in Sources */,
 				8F8588F32B9C8B2F00BB2D65 /* MainScreenBuilder.swift in Sources */,
 				8F8588F22B9C8B2F00BB2D65 /* MainScreenViewController.swift in Sources */,
@@ -317,6 +351,7 @@
 				8F8588CA2B9C7DC200BB2D65 /* AppConfig.swift in Sources */,
 				8F8588D52B9C80DA00BB2D65 /* RootRouter.swift in Sources */,
 				8F8588BA2B9C7D6D00BB2D65 /* Interactable.swift in Sources */,
+				8F8588F72B9C9D4000BB2D65 /* MainScreenCell.swift in Sources */,
 				8F8588C82B9C7DC200BB2D65 /* Dependencies.swift in Sources */,
 				8F8588CB2B9C7DC200BB2D65 /* AppComponent.swift in Sources */,
 				8F8588E92B9C88D400BB2D65 /* SplashInteractor.swift in Sources */,
@@ -327,6 +362,7 @@
 				8F8588C92B9C7DC200BB2D65 /* ServicesContainer.swift in Sources */,
 				8F8588C02B9C7D7E00BB2D65 /* NavigationController.swift in Sources */,
 				8F8588D82B9C80DA00BB2D65 /* RootInteractor.swift in Sources */,
+				8F8588FB2B9C9F4E00BB2D65 /* UIView+Extension.swift in Sources */,
 				8F85889F2B9C78C700BB2D65 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

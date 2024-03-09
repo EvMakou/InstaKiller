@@ -13,19 +13,38 @@ protocol MainScreenPresentable: UIViewController {
     var interactor: MainScreenInteractable? { get set }
     
     func makePhotoScreen()
+    func adjustListLayout()
+    func adjustColumnLayout()
 }
 
 final class MainScreenViewController: ViewController, MainScreenControllable {
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout())
+    private var isColumnLayout = false {
+        didSet {
+            if isColumnLayout {
+                collectionView.setCollectionViewLayout(columnLayout(), animated: true)
+            } else {
+                collectionView.setCollectionViewLayout(listLayout(), animated: true)
+            }
+        }
+    }
+    
     var interactor: MainScreenInteractable?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        interactor?.viewDidLoad()
     }
     
     @objc
     func makePhotoAction() {
         interactor?.makePhotoAction()
+    }
+    
+    @objc
+    func changeLayoutAction() {
+        interactor?.changeLayoutAction()
     }
 }
 
@@ -50,6 +69,30 @@ extension MainScreenViewController: MainScreenPresentable {
         vc.delegate = self
         present(vc, animated: true)
     }
+    
+    func adjustListLayout() {
+        collectionView.setCollectionViewLayout(listLayout(), animated: true)
+    }
+    
+    func adjustColumnLayout() {
+        collectionView.setCollectionViewLayout(columnLayout(), animated: true)
+    }
+}
+
+extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        100
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCell.identifier, for: indexPath) as? MainScreenCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.backgroundColor = .red
+        
+        return cell
+    }
 }
 
 private extension MainScreenViewController {
@@ -66,16 +109,63 @@ private extension MainScreenViewController {
         navigationController?.toolbar.scrollEdgeAppearance = appearance
         
         var buttons = [UIBarButtonItem]()
-        
         buttons.append( UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(makePhotoAction)) )
         buttons.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
         buttons.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil) )
         buttons.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
-        buttons.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: nil) )
+        buttons.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(changeLayoutAction)) )
 
-        self.toolbarItems = buttons
+        toolbarItems = buttons
 
-        
         navigationController?.setToolbarHidden(false, animated: true)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(MainScreenCell.self, forCellWithReuseIdentifier: MainScreenCell.identifier)
+        view.addSubview(collectionView)
+        
+        collectionView.snp.makeConstraints { $0.edges.equalToSuperview() }
+    }
+    
+    func listLayout() -> UICollectionViewLayout {
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .vertical
+        
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: { (section, env) in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(140.0))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 16.0, bottom: 8.0, trailing: 16.0)
+
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+        }, configuration: config)
+        
+        return layout
+    }
+    
+    func columnLayout() -> UICollectionViewLayout {
+        let config = UICollectionViewCompositionalLayoutConfiguration()
+        config.scrollDirection = .vertical
+        
+        let layout = UICollectionViewCompositionalLayout(sectionProvider: { (section, env) in
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets.leading = 1.0
+            item.contentInsets.trailing = 1.0
+            
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.5))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 16.0, bottom: 2.0, trailing: 16.0)
+
+            let section = NSCollectionLayoutSection(group: group)
+            
+            return section
+        }, configuration: config)
+        
+        return layout
     }
 }

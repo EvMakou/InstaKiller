@@ -12,9 +12,12 @@ protocol MainScreenInteractable: ViewInteractable {
     var router: MainScreenRouting { get }
     
     func makePhotoAction()
+    func changeLayoutAction()
 }
 
 final class MainScreenInteractor {
+    private var isColumnLayout = false
+    
     unowned let presenter: MainScreenPresentable
     let router: MainScreenRouting
 
@@ -25,7 +28,21 @@ final class MainScreenInteractor {
 }
 
 extension MainScreenInteractor: MainScreenInteractable {
+    func viewDidLoad() {
+        presenter.adjustListLayout()
+    }
+    
     func makePhotoAction() {
         presenter.makePhotoScreen()
+    }
+    
+    func changeLayoutAction() {
+        isColumnLayout.toggle()
+        
+        if isColumnLayout {
+            presenter.adjustColumnLayout()
+        } else {
+            presenter.adjustListLayout()
+        }
     }
 }
