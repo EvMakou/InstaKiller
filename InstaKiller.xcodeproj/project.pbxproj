@@ -8,22 +8,68 @@
 
 /* Begin PBXBuildFile section */
 		8F85889F2B9C78C700BB2D65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F85889E2B9C78C700BB2D65 /* AppDelegate.swift */; };
-		8F8588A12B9C78C700BB2D65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588A02B9C78C700BB2D65 /* SceneDelegate.swift */; };
-		8F8588A32B9C78C700BB2D65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588A22B9C78C700BB2D65 /* ViewController.swift */; };
-		8F8588A62B9C78C700BB2D65 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588A42B9C78C700BB2D65 /* Main.storyboard */; };
 		8F8588A82B9C78C800BB2D65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588A72B9C78C800BB2D65 /* Assets.xcassets */; };
 		8F8588AB2B9C78C800BB2D65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588A92B9C78C800BB2D65 /* LaunchScreen.storyboard */; };
+		8F8588BA2B9C7D6D00BB2D65 /* Interactable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588B72B9C7D6D00BB2D65 /* Interactable.swift */; };
+		8F8588BB2B9C7D6D00BB2D65 /* ViewControllable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588B82B9C7D6D00BB2D65 /* ViewControllable.swift */; };
+		8F8588BC2B9C7D6D00BB2D65 /* ViewRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588B92B9C7D6D00BB2D65 /* ViewRouting.swift */; };
+		8F8588BF2B9C7D7E00BB2D65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588BD2B9C7D7E00BB2D65 /* ViewController.swift */; };
+		8F8588C02B9C7D7E00BB2D65 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588BE2B9C7D7E00BB2D65 /* NavigationController.swift */; };
+		8F8588C22B9C7D8700BB2D65 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588C12B9C7D8700BB2D65 /* UIViewController+Extension.swift */; };
+		8F8588C82B9C7DC200BB2D65 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588C42B9C7DC200BB2D65 /* Dependencies.swift */; };
+		8F8588C92B9C7DC200BB2D65 /* ServicesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588C52B9C7DC200BB2D65 /* ServicesContainer.swift */; };
+		8F8588CA2B9C7DC200BB2D65 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588C62B9C7DC200BB2D65 /* AppConfig.swift */; };
+		8F8588CB2B9C7DC200BB2D65 /* AppComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588C72B9C7DC200BB2D65 /* AppComponent.swift */; };
+		8F8588D42B9C80DA00BB2D65 /* Root.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588CF2B9C80DA00BB2D65 /* Root.storyboard */; };
+		8F8588D52B9C80DA00BB2D65 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588D02B9C80DA00BB2D65 /* RootRouter.swift */; };
+		8F8588D62B9C80DA00BB2D65 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588D12B9C80DA00BB2D65 /* RootViewController.swift */; };
+		8F8588D72B9C80DA00BB2D65 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588D22B9C80DA00BB2D65 /* RootBuilder.swift */; };
+		8F8588D82B9C80DA00BB2D65 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588D32B9C80DA00BB2D65 /* RootInteractor.swift */; };
+		8F8588DB2B9C834D00BB2D65 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8588DA2B9C834D00BB2D65 /* SnapKit */; };
+		8F8588DD2B9C834D00BB2D65 /* SnapKit-Dynamic in Frameworks */ = {isa = PBXBuildFile; productRef = 8F8588DC2B9C834D00BB2D65 /* SnapKit-Dynamic */; };
+		8F8588E52B9C88D400BB2D65 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588E02B9C88D400BB2D65 /* Splash.storyboard */; };
+		8F8588E62B9C88D400BB2D65 /* SplashRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588E12B9C88D400BB2D65 /* SplashRouter.swift */; };
+		8F8588E72B9C88D400BB2D65 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588E22B9C88D400BB2D65 /* SplashViewController.swift */; };
+		8F8588E82B9C88D400BB2D65 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588E32B9C88D400BB2D65 /* SplashBuilder.swift */; };
+		8F8588E92B9C88D400BB2D65 /* SplashInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588E42B9C88D400BB2D65 /* SplashInteractor.swift */; };
+		8F8588F02B9C8B2F00BB2D65 /* MainScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8F8588EB2B9C8B2F00BB2D65 /* MainScreen.storyboard */; };
+		8F8588F12B9C8B2F00BB2D65 /* MainScreenRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588EC2B9C8B2F00BB2D65 /* MainScreenRouter.swift */; };
+		8F8588F22B9C8B2F00BB2D65 /* MainScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */; };
+		8F8588F32B9C8B2F00BB2D65 /* MainScreenBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588EE2B9C8B2F00BB2D65 /* MainScreenBuilder.swift */; };
+		8F8588F42B9C8B2F00BB2D65 /* MainScreenInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8F85889B2B9C78C700BB2D65 /* InstaKiller.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstaKiller.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F85889E2B9C78C700BB2D65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8F8588A02B9C78C700BB2D65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8F8588A22B9C78C700BB2D65 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8F8588A52B9C78C700BB2D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8F8588A72B9C78C800BB2D65 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F8588AA2B9C78C800BB2D65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F8588AC2B9C78C800BB2D65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F8588B72B9C7D6D00BB2D65 /* Interactable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Interactable.swift; sourceTree = "<group>"; };
+		8F8588B82B9C7D6D00BB2D65 /* ViewControllable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllable.swift; sourceTree = "<group>"; };
+		8F8588B92B9C7D6D00BB2D65 /* ViewRouting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewRouting.swift; sourceTree = "<group>"; };
+		8F8588BD2B9C7D7E00BB2D65 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8F8588BE2B9C7D7E00BB2D65 /* NavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		8F8588C12B9C7D8700BB2D65 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		8F8588C42B9C7DC200BB2D65 /* Dependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		8F8588C52B9C7DC200BB2D65 /* ServicesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesContainer.swift; sourceTree = "<group>"; };
+		8F8588C62B9C7DC200BB2D65 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		8F8588C72B9C7DC200BB2D65 /* AppComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppComponent.swift; sourceTree = "<group>"; };
+		8F8588CF2B9C80DA00BB2D65 /* Root.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Root.storyboard; sourceTree = "<group>"; };
+		8F8588D02B9C80DA00BB2D65 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
+		8F8588D12B9C80DA00BB2D65 /* RootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		8F8588D22B9C80DA00BB2D65 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
+		8F8588D32B9C80DA00BB2D65 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
+		8F8588E02B9C88D400BB2D65 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		8F8588E12B9C88D400BB2D65 /* SplashRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashRouter.swift; sourceTree = "<group>"; };
+		8F8588E22B9C88D400BB2D65 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		8F8588E32B9C88D400BB2D65 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
+		8F8588E42B9C88D400BB2D65 /* SplashInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashInteractor.swift; sourceTree = "<group>"; };
+		8F8588EB2B9C8B2F00BB2D65 /* MainScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MainScreen.storyboard; sourceTree = "<group>"; };
+		8F8588EC2B9C8B2F00BB2D65 /* MainScreenRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenRouter.swift; sourceTree = "<group>"; };
+		8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewController.swift; sourceTree = "<group>"; };
+		8F8588EE2B9C8B2F00BB2D65 /* MainScreenBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenBuilder.swift; sourceTree = "<group>"; };
+		8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenInteractor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +77,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8588DB2B9C834D00BB2D65 /* SnapKit in Frameworks */,
+				8F8588DD2B9C834D00BB2D65 /* SnapKit-Dynamic in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,7 +88,8 @@
 		8F8588922B9C78C700BB2D65 = {
 			isa = PBXGroup;
 			children = (
-				8F85889D2B9C78C700BB2D65 /* InstaKiller */,
+				8F8588B22B9C7C7100BB2D65 /* Source */,
+				8F8588B32B9C7C9500BB2D65 /* Resources */,
 				8F85889C2B9C78C700BB2D65 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -53,18 +102,127 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8F85889D2B9C78C700BB2D65 /* InstaKiller */ = {
+		8F8588B22B9C7C7100BB2D65 /* Source */ = {
 			isa = PBXGroup;
 			children = (
 				8F85889E2B9C78C700BB2D65 /* AppDelegate.swift */,
-				8F8588A02B9C78C700BB2D65 /* SceneDelegate.swift */,
-				8F8588A22B9C78C700BB2D65 /* ViewController.swift */,
-				8F8588A42B9C78C700BB2D65 /* Main.storyboard */,
-				8F8588A72B9C78C800BB2D65 /* Assets.xcassets */,
-				8F8588A92B9C78C800BB2D65 /* LaunchScreen.storyboard */,
-				8F8588AC2B9C78C800BB2D65 /* Info.plist */,
+				8F8588CC2B9C806300BB2D65 /* Modules */,
+				8F8588C32B9C7DA800BB2D65 /* Dependencies */,
+				8F8588B42B9C7D3D00BB2D65 /* Services */,
 			);
-			path = InstaKiller;
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8F8588B32B9C7C9500BB2D65 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588AC2B9C78C800BB2D65 /* Info.plist */,
+				8F8588A72B9C78C800BB2D65 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8F8588B42B9C7D3D00BB2D65 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588B72B9C7D6D00BB2D65 /* Interactable.swift */,
+				8F8588B82B9C7D6D00BB2D65 /* ViewControllable.swift */,
+				8F8588B92B9C7D6D00BB2D65 /* ViewRouting.swift */,
+				8F8588B52B9C7D5100BB2D65 /* Controllers */,
+				8F8588B62B9C7D5700BB2D65 /* Extensions */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8F8588B52B9C7D5100BB2D65 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588BE2B9C7D7E00BB2D65 /* NavigationController.swift */,
+				8F8588BD2B9C7D7E00BB2D65 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		8F8588B62B9C7D5700BB2D65 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588C12B9C7D8700BB2D65 /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8F8588C32B9C7DA800BB2D65 /* Dependencies */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588C72B9C7DC200BB2D65 /* AppComponent.swift */,
+				8F8588C62B9C7DC200BB2D65 /* AppConfig.swift */,
+				8F8588C42B9C7DC200BB2D65 /* Dependencies.swift */,
+				8F8588C52B9C7DC200BB2D65 /* ServicesContainer.swift */,
+			);
+			path = Dependencies;
+			sourceTree = "<group>";
+		};
+		8F8588CC2B9C806300BB2D65 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588CD2B9C809100BB2D65 /* Main */,
+				8F8588DE2B9C838100BB2D65 /* Launch */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		8F8588CD2B9C809100BB2D65 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588EA2B9C8B1700BB2D65 /* MainScreen */,
+				8F8588CE2B9C80BF00BB2D65 /* Root */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		8F8588CE2B9C80BF00BB2D65 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588CF2B9C80DA00BB2D65 /* Root.storyboard */,
+				8F8588D02B9C80DA00BB2D65 /* RootRouter.swift */,
+				8F8588D12B9C80DA00BB2D65 /* RootViewController.swift */,
+				8F8588D22B9C80DA00BB2D65 /* RootBuilder.swift */,
+				8F8588D32B9C80DA00BB2D65 /* RootInteractor.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		8F8588DE2B9C838100BB2D65 /* Launch */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588DF2B9C88B700BB2D65 /* Splash */,
+			);
+			path = Launch;
+			sourceTree = "<group>";
+		};
+		8F8588DF2B9C88B700BB2D65 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588A92B9C78C800BB2D65 /* LaunchScreen.storyboard */,
+				8F8588E02B9C88D400BB2D65 /* Splash.storyboard */,
+				8F8588E12B9C88D400BB2D65 /* SplashRouter.swift */,
+				8F8588E22B9C88D400BB2D65 /* SplashViewController.swift */,
+				8F8588E32B9C88D400BB2D65 /* SplashBuilder.swift */,
+				8F8588E42B9C88D400BB2D65 /* SplashInteractor.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		8F8588EA2B9C8B1700BB2D65 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				8F8588EB2B9C8B2F00BB2D65 /* MainScreen.storyboard */,
+				8F8588EC2B9C8B2F00BB2D65 /* MainScreenRouter.swift */,
+				8F8588ED2B9C8B2F00BB2D65 /* MainScreenViewController.swift */,
+				8F8588EE2B9C8B2F00BB2D65 /* MainScreenBuilder.swift */,
+				8F8588EF2B9C8B2F00BB2D65 /* MainScreenInteractor.swift */,
+			);
+			path = MainScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +241,10 @@
 			dependencies = (
 			);
 			name = InstaKiller;
+			packageProductDependencies = (
+				8F8588DA2B9C834D00BB2D65 /* SnapKit */,
+				8F8588DC2B9C834D00BB2D65 /* SnapKit-Dynamic */,
+			);
 			productName = InstaKiller;
 			productReference = 8F85889B2B9C78C700BB2D65 /* InstaKiller.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +273,9 @@
 				Base,
 			);
 			mainGroup = 8F8588922B9C78C700BB2D65;
+			packageReferences = (
+				8F8588D92B9C834D00BB2D65 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8F85889C2B9C78C700BB2D65 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -125,9 +290,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F8588D42B9C80DA00BB2D65 /* Root.storyboard in Resources */,
+				8F8588F02B9C8B2F00BB2D65 /* MainScreen.storyboard in Resources */,
 				8F8588AB2B9C78C800BB2D65 /* LaunchScreen.storyboard in Resources */,
 				8F8588A82B9C78C800BB2D65 /* Assets.xcassets in Resources */,
-				8F8588A62B9C78C700BB2D65 /* Main.storyboard in Resources */,
+				8F8588E52B9C88D400BB2D65 /* Splash.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +305,35 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F8588A32B9C78C700BB2D65 /* ViewController.swift in Sources */,
+				8F8588F42B9C8B2F00BB2D65 /* MainScreenInteractor.swift in Sources */,
+				8F8588C22B9C7D8700BB2D65 /* UIViewController+Extension.swift in Sources */,
+				8F8588BF2B9C7D7E00BB2D65 /* ViewController.swift in Sources */,
+				8F8588F32B9C8B2F00BB2D65 /* MainScreenBuilder.swift in Sources */,
+				8F8588F22B9C8B2F00BB2D65 /* MainScreenViewController.swift in Sources */,
+				8F8588E82B9C88D400BB2D65 /* SplashBuilder.swift in Sources */,
+				8F8588F12B9C8B2F00BB2D65 /* MainScreenRouter.swift in Sources */,
+				8F8588D72B9C80DA00BB2D65 /* RootBuilder.swift in Sources */,
+				8F8588E72B9C88D400BB2D65 /* SplashViewController.swift in Sources */,
+				8F8588CA2B9C7DC200BB2D65 /* AppConfig.swift in Sources */,
+				8F8588D52B9C80DA00BB2D65 /* RootRouter.swift in Sources */,
+				8F8588BA2B9C7D6D00BB2D65 /* Interactable.swift in Sources */,
+				8F8588C82B9C7DC200BB2D65 /* Dependencies.swift in Sources */,
+				8F8588CB2B9C7DC200BB2D65 /* AppComponent.swift in Sources */,
+				8F8588E92B9C88D400BB2D65 /* SplashInteractor.swift in Sources */,
+				8F8588BB2B9C7D6D00BB2D65 /* ViewControllable.swift in Sources */,
+				8F8588E62B9C88D400BB2D65 /* SplashRouter.swift in Sources */,
+				8F8588BC2B9C7D6D00BB2D65 /* ViewRouting.swift in Sources */,
+				8F8588D62B9C80DA00BB2D65 /* RootViewController.swift in Sources */,
+				8F8588C92B9C7DC200BB2D65 /* ServicesContainer.swift in Sources */,
+				8F8588C02B9C7D7E00BB2D65 /* NavigationController.swift in Sources */,
+				8F8588D82B9C80DA00BB2D65 /* RootInteractor.swift in Sources */,
 				8F85889F2B9C78C700BB2D65 /* AppDelegate.swift in Sources */,
-				8F8588A12B9C78C700BB2D65 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8F8588A42B9C78C700BB2D65 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8F8588A52B9C78C700BB2D65 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8F8588A92B9C78C800BB2D65 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,10 +473,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86EDASNBEC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = InstaKiller/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,10 +500,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 86EDASNBEC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = InstaKiller/Info.plist;
+				INFOPLIST_FILE = Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -363,6 +540,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8F8588D92B9C834D00BB2D65 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8F8588DA2B9C834D00BB2D65 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8588D92B9C834D00BB2D65 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		8F8588DC2B9C834D00BB2D65 /* SnapKit-Dynamic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8F8588D92B9C834D00BB2D65 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = "SnapKit-Dynamic";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8F8588932B9C78C700BB2D65 /* Project object */;
 }
