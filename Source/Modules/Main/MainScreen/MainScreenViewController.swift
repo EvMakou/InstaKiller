@@ -16,12 +16,12 @@ protocol MainScreenPresentable: UIViewController {
     func adjustListLayout()
     func adjustColumnLayout()
     
-    func update(images: [UIImage])
+    func update(viewModels: [MainScreenViewModel])
 }
 
 final class MainScreenViewController: ViewController, MainScreenControllable {
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout())
-    private var images: [UIImage] = []
+    private var viewModels: [MainScreenViewModel] = []
     
     var interactor: MainScreenInteractable?
 
@@ -73,24 +73,25 @@ extension MainScreenViewController: MainScreenPresentable {
         collectionView.setCollectionViewLayout(columnLayout(), animated: true)
     }
     
-    func update(images: [UIImage]) {
-        self.images = images
+    func update(viewModels: [MainScreenViewModel]) {
+        self.viewModels = viewModels
         collectionView.reloadData()
     }
 }
 
 extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        images.count
+        viewModels.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainScreenCell.identifier, for: indexPath) as? MainScreenCell,
-              let image = images[safe: indexPath.row] else {
+              let viewModel = viewModels[safe: indexPath.row] else {
             return UICollectionViewCell()
         }
         
-        cell.imageView.image = image
+        cell.imageView.image = viewModel.image
+        cell.nameLabel.text = viewModel.name
         
         return cell
     }

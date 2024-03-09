@@ -9,6 +9,7 @@ import UIKit
 
 final class MainScreenCell: UICollectionViewCell {
     let imageView = UIImageView()
+    let nameLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -17,6 +18,13 @@ final class MainScreenCell: UICollectionViewCell {
         addSubview(imageView)
         
         imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
+        
+        nameLabel.textAlignment = .center
+        nameLabel.backgroundColor = .white
+        
+        addSubview(nameLabel)
+        
+        nameLabel.snp.makeConstraints { $0.top.leading.trailing.equalToSuperview() }
     }
     
     required init?(coder: NSCoder) {

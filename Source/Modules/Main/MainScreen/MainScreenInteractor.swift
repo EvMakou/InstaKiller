@@ -20,7 +20,7 @@ final class MainScreenInteractor {
     @Injected private var imagesControlService: ImagesStoreServiceProtocol
     
     private var isColumnLayout = false
-    private var images: [UIImage] = []
+    private var imageNames: [String] = []
     
     unowned let presenter: MainScreenPresentable
     let router: MainScreenRouting
@@ -35,16 +35,10 @@ extension MainScreenInteractor: MainScreenInteractable {
     func viewDidLoad() {
         presenter.adjustListLayout()
         
-        let names = imagesControlService.imageNames()
+        let imageNames = imagesControlService.imageNames()
+        self.imageNames = imageNames
         
-        for name in names {
-            if let image = imagesControlService.image(fileName: name) {
-                images.append(image)
-            }
-        }
-        
-        presenter.update(images: images)
-        print("")
+        presenter.update(viewModels: viewModels())
     }
     
     func makePhotoAction() {
@@ -69,14 +63,23 @@ extension MainScreenInteractor: MainScreenInteractable {
         
         let count = imagesControlService.imageNames().compactMap { $0.components(separatedBy: "(").first }.filter { $0 == nameOfMonth }.count
         
-        print("")
-        
         let imageName = nameOfMonth + "(\(count + 1))"
         
         if imagesControlService.saveImage(imageName: imageName, image: image) {
-            print("")
-            images.append(image)
-            presenter.update(images: images)
+            var viewModels = viewModels()
+            viewModels.append(MainScreenViewModel(name: imageName, image: image))
+            presenter.update(viewModels: viewModels)
         }
+    }
+    
+    func viewModels() -> [MainScreenViewModel] {
+        var viewModels: [MainScreenViewModel] = []
+        for name in imageNames {
+            if let image = imagesControlService.image(fileName: name) {
+                viewModels.append(MainScreenViewModel(name: name, image: image))
+            }
+        }
+        
+        return viewModels
     }
 }
