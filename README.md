@@ -10,3 +10,8 @@ https://github.com/EvMakou/InstaKiller/assets/22460220/544f764b-c8ca-4a12-8da5-f
 
 https://github.com/EvMakou/InstaKiller/assets/22460220/ecec5992-10fb-4aa8-ae50-51fd3b1868d6
 
+
+
+
+https://github.com/EvMakou/InstaKiller/assets/22460220/947e055a-2704-4180-9e6a-a88132a2a996
+
