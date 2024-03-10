@@ -18,7 +18,7 @@ protocol DetailsScreenInteractable: ViewInteractable {
 final class DetailsScreenInteractor {
     @Injected private var imagesStoreService: ImagesStoreServiceProtocol
     
-    private var listener: MainScreenListener
+    private weak var listener: MainScreenListener?
     private let fileName: String
     
     unowned let presenter: DetailsScreenPresentable
@@ -47,9 +47,6 @@ extension DetailsScreenInteractor: DetailsScreenInteractable {
     
     func didChange(title: String) {
         imagesStoreService.change(fileName: fileName, to: title)
-        
-        let imageNames = imagesStoreService.imageNames()
-        
-        print("")
+        listener?.titleDidChange()
     }
 }

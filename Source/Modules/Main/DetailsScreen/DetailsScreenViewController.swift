@@ -17,6 +17,7 @@ protocol DetailsScreenPresentable: UIViewController {
 }
 
 final class DetailsScreenViewController: ViewController, DetailsScreenControllable {
+    private let scrollView = UIScrollView()
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
     
@@ -62,6 +63,12 @@ extension DetailsScreenViewController: DetailsScreenPresentable {
     }
 }
 
+extension DetailsScreenViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        imageView
+    }
+}
+
 private extension DetailsScreenViewController {
     func setupUI() {
         titleLabel.textAlignment = .center
@@ -75,13 +82,20 @@ private extension DetailsScreenViewController {
         
         titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleAction)))
         
-        imageView.contentMode = .scaleAspectFit
+        scrollView.delegate = self
+        scrollView.minimumZoomScale = 1.0
+        scrollView.maximumZoomScale = 6.0
+        view.addSubview(scrollView)
         
-        view.addSubview(imageView)
-        
-        imageView.snp.makeConstraints { make in
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(20.0)
             make.leading.trailing.bottom.equalToSuperview()
         }
+        
+        imageView.contentMode = .scaleAspectFit
+        
+        scrollView.addSubview(imageView)
+        
+        imageView.snp.makeConstraints { $0.width.height.equalToSuperview() }
     }
 }

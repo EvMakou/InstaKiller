@@ -19,7 +19,7 @@ protocol MainScreenInteractable: ViewInteractable {
 }
 
 protocol MainScreenListener: AnyObject {
-    
+    func titleDidChange()
 }
 
 final class MainScreenInteractor {
@@ -101,7 +101,10 @@ extension MainScreenInteractor: MainScreenInteractable {
 }
 
 extension MainScreenInteractor: MainScreenListener {
-    
+    func titleDidChange() {
+        imageNames = imagesStoreService.imageNames()
+        presenter.update(viewModels: viewModels())
+    }
 }
 
 private extension MainScreenInteractor {
