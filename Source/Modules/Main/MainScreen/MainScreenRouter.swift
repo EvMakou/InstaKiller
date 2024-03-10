@@ -9,6 +9,8 @@ import Foundation
 
 protocol MainScreenRouting: ViewRouting {
     var viewController: MainScreenControllable { get }
+    
+    func routeToDetailsScreen(fileName: String, listener: MainScreenListener)
 }
 
 final class MainScreenRouter {
@@ -21,4 +23,9 @@ final class MainScreenRouter {
     }
 }
 
-extension MainScreenRouter: MainScreenRouting {}
+extension MainScreenRouter: MainScreenRouting {
+    func routeToDetailsScreen(fileName: String, listener: MainScreenListener) {
+        let details = DetailsScreenBuilder().build(appComponent: appComponent, fileName: fileName, listener: listener)
+        viewController.navigationController?.pushViewController(details, animated: true)
+    }
+}

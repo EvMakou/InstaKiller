@@ -111,6 +111,10 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
         return context
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        interactor?.didSelectItem(at: indexPath)
+    }
 }
 
 private extension MainScreenViewController {

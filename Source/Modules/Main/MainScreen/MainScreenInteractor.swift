@@ -15,10 +15,15 @@ protocol MainScreenInteractable: ViewInteractable {
     func changeLayoutAction()
     func photoTaken(image: UIImage)
     func removePhoto(by index: Int)
+    func didSelectItem(at indexPath: IndexPath)
+}
+
+protocol MainScreenListener: AnyObject {
+    
 }
 
 final class MainScreenInteractor {
-    @Injected private var imagesControlService: ImagesStoreServiceProtocol
+    @Injected private var imagesStoreService: ImagesStoreServiceProtocol
     
     private var isGridLayout = false
     private var imageNames: [String] = []
@@ -36,7 +41,7 @@ extension MainScreenInteractor: MainScreenInteractable {
     func viewDidLoad() {
         presenter.adjustListLayout()
         
-        let imageNames = imagesControlService.imageNames()
+        let imageNames = imagesStoreService.imageNames()
         self.imageNames = imageNames
         
         presenter.update(viewModels: viewModels())
@@ -62,11 +67,11 @@ extension MainScreenInteractor: MainScreenInteractable {
         dateFormatter.dateFormat = "MMMM d"
         let nameOfMonth = dateFormatter.string(from: now)
         
-        let currentIndex = Int(imagesControlService.imageNames().last?.slice(from: "(", to: ")") ?? "0") ?? 0
+        let currentIndex = Int(imagesStoreService.imageNames().last?.slice(from: "(", to: ")") ?? "0") ?? 0
         
         let imageName: String = nameOfMonth + "(\(currentIndex + 1))"
         
-        if imagesControlService.saveImage(imageName: imageName, image: image) {
+        if imagesStoreService.saveImage(imageName: imageName, image: image) {
             imageNames.append(imageName)
             
             presenter.update(viewModels: viewModels())
@@ -80,16 +85,28 @@ extension MainScreenInteractor: MainScreenInteractable {
         
         imageNames.remove(at: index)
         
-        imagesControlService.removeImageIfNeeded(fileName: nameToDelete)
+        imagesStoreService.removeImageIfNeeded(fileName: nameToDelete)
         presenter.update(viewModels: viewModels())
     }
+    
+    func didSelectItem(at indexPath: IndexPath) {
+        guard let fileName = imageNames[safe: indexPath.row] else {
+            return
+        }
+        
+        router.routeToDetailsScreen(fileName: fileName, listener: self)
+    }
+}
+
+extension MainScreenInteractor: MainScreenListener {
+    
 }
 
 private extension MainScreenInteractor {
     func viewModels() -> [MainScreenViewModel] {
         var viewModels: [MainScreenViewModel] = []
         for name in imageNames {
-            if let image = imagesControlService.image(fileName: name) {
+            if let image = imagesStoreService.image(fileName: name) {
                 viewModels.append(MainScreenViewModel(name: name, image: image))
             }
         }
