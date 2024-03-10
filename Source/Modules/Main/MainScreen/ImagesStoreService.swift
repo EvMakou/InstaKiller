@@ -11,6 +11,9 @@ protocol ImagesStoreServiceProtocol {
     func saveImage(imageName: String, image: UIImage) -> Bool
     func image(fileName: String) -> UIImage?
     func imageNames() -> [String]
+    
+    @discardableResult
+    func removeImageIfNeeded(fileName: String) -> Bool
 }
 
 final class ImagesStoreService {
@@ -24,21 +27,13 @@ extension ImagesStoreService: ImagesStoreServiceProtocol {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return false
         }
-
-        let fileName = imageName
-        let fileURL = documentsDirectory.appendingPathComponent(fileName)
-        guard let data = image.jpegData(compressionQuality: 1) else { 
+        
+        removeImageIfNeeded(fileName: imageName)
+        
+        let fileURL = documentsDirectory.appendingPathComponent(imageName)
+        
+        guard let data = image.jpegData(compressionQuality: 1) else {
             return false
-        }
-
-        if FileManager.default.fileExists(atPath: fileURL.path) {
-            do {
-                try FileManager.default.removeItem(atPath: fileURL.path)
-                print("Removed old image")
-            } catch let removeError {
-                fatalError("couldn't remove file at path \(removeError)")
-            }
-
         }
 
         do {
@@ -53,6 +48,34 @@ extension ImagesStoreService: ImagesStoreServiceProtocol {
         } catch let error {
             fatalError("error saving file with error \(error)")
         }
+    }
+    
+    @discardableResult
+    func removeImageIfNeeded(fileName: String) -> Bool {
+        guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+            return false
+        }
+        
+        let fileURL = documentsDirectory.appendingPathComponent(fileName)
+        if FileManager.default.fileExists(atPath: fileURL.path) {
+            do {
+                try FileManager.default.removeItem(atPath: fileURL.path)
+                
+                var array = UserDefaults.standard.object(forKey: Constants.namesKey) as? [String] ?? []
+                if let index = array.firstIndex(of: fileName) {
+                    array.remove(at: index)
+                }
+                
+                UserDefaults.standard.setValue(array, forKey: Constants.namesKey)
+                
+                print("Removed old image")
+                return true
+            } catch let removeError {
+                fatalError("couldn't remove file at path \(removeError)")
+            }
+        }
+        
+        return false
     }
 
     func image(fileName: String) -> UIImage? {

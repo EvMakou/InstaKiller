@@ -8,13 +8,13 @@
 import UIKit
 
 final class MainScreenCell: UICollectionViewCell {
-    let imageView = UIImageView()
-    let nameLabel = UILabel()
+    private let imageView = UIImageView()
+    private let nameLabel = UILabel()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         addSubview(imageView)
         
         imageView.snp.makeConstraints { $0.edges.equalToSuperview() }
@@ -24,10 +24,20 @@ final class MainScreenCell: UICollectionViewCell {
         
         addSubview(nameLabel)
         
-        nameLabel.snp.makeConstraints { $0.top.leading.trailing.equalToSuperview() }
+        nameLabel.snp.makeConstraints { make in
+            make.top.leading.equalToSuperview()
+        }
+        
+        clipsToBounds = true
+        layer.cornerRadius = 10.0
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func adjust(viewModel: MainScreenViewModel) {
+        imageView.image = viewModel.image
+        nameLabel.text = viewModel.name
     }
 }

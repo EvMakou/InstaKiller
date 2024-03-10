@@ -14,13 +14,13 @@ protocol MainScreenPresentable: UIViewController {
     
     func makePhotoScreen()
     func adjustListLayout()
-    func adjustColumnLayout()
+    func adjustGridLayout()
     
     func update(viewModels: [MainScreenViewModel])
 }
 
 final class MainScreenViewController: ViewController, MainScreenControllable {
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: columnLayout())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: gridLayout())
     private var viewModels: [MainScreenViewModel] = []
     
     var interactor: MainScreenInteractable?
@@ -69,8 +69,8 @@ extension MainScreenViewController: MainScreenPresentable {
         collectionView.setCollectionViewLayout(listLayout(), animated: true)
     }
     
-    func adjustColumnLayout() {
-        collectionView.setCollectionViewLayout(columnLayout(), animated: true)
+    func adjustGridLayout() {
+        collectionView.setCollectionViewLayout(gridLayout(), animated: true)
     }
     
     func update(viewModels: [MainScreenViewModel]) {
@@ -90,10 +90,26 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
             return UICollectionViewCell()
         }
         
-        cell.imageView.image = viewModel.image
-        cell.nameLabel.text = viewModel.name
+        cell.adjust(viewModel: viewModel)
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+        let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { (action) -> UIMenu? in
+            let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash"),
+                                  identifier: nil,
+                                  discoverabilityTitle: nil,
+                                  attributes: .destructive,
+                                  state: .off) { [weak self] ( _ ) in
+                
+                self?.interactor?.removePhoto(by: indexPath.row)
+            }
+            
+            return UIMenu(title: "", image: nil, identifier: nil, options: UIMenu.Options.displayInline, children: [delete])
+        }
+        
+        return context
     }
 }
 
@@ -112,8 +128,6 @@ private extension MainScreenViewController {
         
         var buttons = [UIBarButtonItem]()
         buttons.append( UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(makePhotoAction)) )
-        buttons.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
-        buttons.append( UIBarButtonItem(barButtonSystemItem: .add, target: self, action: nil) )
         buttons.append( UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil) )
         buttons.append( UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(changeLayoutAction)) )
 
@@ -149,15 +163,15 @@ private extension MainScreenViewController {
         return layout
     }
     
-    func columnLayout() -> UICollectionViewLayout {
+    func gridLayout() -> UICollectionViewLayout {
         let config = UICollectionViewCompositionalLayoutConfiguration()
         config.scrollDirection = .vertical
         
         let layout = UICollectionViewCompositionalLayout(sectionProvider: { (section, env) in
             let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            item.contentInsets.leading = 1.0
-            item.contentInsets.trailing = 1.0
+            item.contentInsets.leading = 2.0
+            item.contentInsets.trailing = 2.0
             
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.5))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
