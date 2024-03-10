@@ -13,6 +13,7 @@ protocol DetailsScreenPresentable: UIViewController {
     var interactor: DetailsScreenInteractable? { get set }
     
     func adjust(viewModel: MainScreenViewModel)
+    func showAlert()
 }
 
 final class DetailsScreenViewController: ViewController, DetailsScreenControllable {
@@ -26,6 +27,11 @@ final class DetailsScreenViewController: ViewController, DetailsScreenControllab
         setupUI()
         interactor?.viewDidLoad()
     }
+    
+    @objc
+    func titleAction() {
+        interactor?.titleDidSelect()
+    }
 }
 
 extension DetailsScreenViewController: DetailsScreenPresentable {
@@ -33,18 +39,41 @@ extension DetailsScreenViewController: DetailsScreenPresentable {
         imageView.image = viewModel.image
         titleLabel.text = viewModel.name
     }
+    
+    func showAlert() {
+        let ac = UIAlertController(title: "Enter new title", message: nil, preferredStyle: .alert)
+        ac.addTextField()
+
+        let submitAction = UIAlertAction(title: "Confirm", style: .default) { [unowned ac] _ in
+            guard let title = ac.textFields?[safe: 0]?.text else {
+                return
+            }
+            
+            self.titleLabel.text = title
+            self.interactor?.didChange(title: title)
+        }
+    
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in }
+
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        
+        present(ac, animated: true)
+    }
 }
 
 private extension DetailsScreenViewController {
     func setupUI() {
         titleLabel.textAlignment = .center
-        
+        titleLabel.isUserInteractionEnabled = true
         view.addSubview(titleLabel)
         
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20.0)
             make.leading.trailing.equalToSuperview()
         }
+        
+        titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(titleAction)))
         
         imageView.contentMode = .scaleAspectFit
         

@@ -10,6 +10,9 @@ import Foundation
 protocol DetailsScreenInteractable: ViewInteractable {
     var presenter: DetailsScreenPresentable { get }
     var router: DetailsScreenRouting { get }
+    
+    func titleDidSelect()
+    func didChange(title: String)
 }
 
 final class DetailsScreenInteractor {
@@ -36,5 +39,17 @@ extension DetailsScreenInteractor: DetailsScreenInteractable {
         }
         
         presenter.adjust(viewModel: MainScreenViewModel(name: fileName, image: image))
+    }
+    
+    func titleDidSelect() {
+        presenter.showAlert()
+    }
+    
+    func didChange(title: String) {
+        imagesStoreService.change(fileName: fileName, to: title)
+        
+        let imageNames = imagesStoreService.imageNames()
+        
+        print("")
     }
 }

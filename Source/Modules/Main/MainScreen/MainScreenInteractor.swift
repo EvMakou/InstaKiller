@@ -67,7 +67,9 @@ extension MainScreenInteractor: MainScreenInteractable {
         dateFormatter.dateFormat = "MMMM d"
         let nameOfMonth = dateFormatter.string(from: now)
         
-        let currentIndex = Int(imagesStoreService.imageNames().last?.slice(from: "(", to: ")") ?? "0") ?? 0
+        //let currentIndex = Int(imagesStoreService.imageNames().last?.slice(from: "(", to: ")") ?? "0") ?? 0
+        
+        let currentIndex = Int(imagesStoreService.imageNames().last(where: { $0.contains("(") })?.slice(from: "(", to: ")") ?? "0") ?? 0
         
         let imageName: String = nameOfMonth + "(\(currentIndex + 1))"
         

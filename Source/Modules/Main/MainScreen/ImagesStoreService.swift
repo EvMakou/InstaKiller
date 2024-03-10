@@ -14,6 +14,8 @@ protocol ImagesStoreServiceProtocol {
     
     @discardableResult
     func removeImageIfNeeded(fileName: String) -> Bool
+    
+    func change(fileName: String, to newFileName: String)
 }
 
 final class ImagesStoreService {
@@ -94,5 +96,14 @@ extension ImagesStoreService: ImagesStoreServiceProtocol {
     
     func imageNames() -> [String] {
         UserDefaults.standard.object(forKey: Constants.namesKey) as? [String] ?? []
+    }
+    
+    func change(fileName: String, to newFileName: String) {
+        guard let image = image(fileName: fileName) else {
+            return
+        }
+        
+        removeImageIfNeeded(fileName: fileName)
+        _ = saveImage(imageName: newFileName, image: image)
     }
 }
