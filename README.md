@@ -27,6 +27,8 @@ Project haven’t any warnings.
 9. Swipes photos in details screen ✅
 10. Local storage ✅
 11. Screen with local data ✅
+12. Authorization/login ✅
+
 
 Additional features:
 1. Gallery layout changes with animation
