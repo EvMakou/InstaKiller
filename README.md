@@ -32,3 +32,11 @@ Additional features:
 1. Gallery layout changes with animation
 2. Like animation like on instagram
 3. Screen with local images
+
+Demo
+
+
+https://github.com/EvMakou/InstaKiller/assets/22460220/9e298859-0aab-4de1-8dc5-45e8b732f58c
+
+
+
