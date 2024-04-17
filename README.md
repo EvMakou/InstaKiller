@@ -16,7 +16,7 @@ Some links:
 Here you can see image gallery app - InstaKiller.
 
 I used clean architecture - RIBsLite. The idea of this architecture is based on Uber RIBs.
-Project haven’t any warnings.
+Project hasn't any warnings.
 
 
 1. 13 iOS supporting ✅
