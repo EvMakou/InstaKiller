@@ -1,6 +1,10 @@
 Hello everyone!
 
 I am iOS Developer. I have 5-6 years of experience in programming. I have some own projects in AppStore. Also I’ve made a lot of difficult games solutions.
+
+MyCV: https://evmakou.github.io/MyCV/
+
+
 Some links:
 
 1. https://drive.google.com/file/d/13of9CcIZyNcR-I8_CAnBgHUYhRzDkqA9/view?usp=share_link
